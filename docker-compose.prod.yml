@@ -8,13 +8,11 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DATABASE_PATH=/app/data/database.sqlite
+      - DATABASE_URL=${DATABASE_URL}
       - JWT_SECRET=${JWT_SECRET}
       - FRONTEND_URL=${FRONTEND_URL}
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-    volumes:
-      - sqlite_data:/app/data
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -40,6 +38,3 @@ services:
         delay: 5s
         max_attempts: 3
 
-volumes:
-  sqlite_data:
-    driver: local
