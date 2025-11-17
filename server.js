@@ -1,12 +1,17 @@
 require("dotenv").config();
 
 // Проверка обязательных переменных окружения
-const requiredEnvVars = ['JWT_SECRET'];
-const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+const requiredEnvVars = ["JWT_SECRET"];
+const missingEnvVars = requiredEnvVars.filter(
+  (varName) => !process.env[varName]
+);
 
 if (missingEnvVars.length > 0) {
-  console.error('Ошибка: Отсутствуют обязательные переменные окружения:', missingEnvVars.join(', '));
-  console.error('Создайте .env файл на основе .env.example');
+  console.error(
+    "Ошибка: Отсутствуют обязательные переменные окружения:",
+    missingEnvVars.join(", ")
+  );
+  console.error("Создайте .env файл на основе .env.example");
   process.exit(1);
 }
 
